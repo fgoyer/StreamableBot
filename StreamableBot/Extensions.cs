@@ -1,15 +1,15 @@
-﻿using System;
+﻿using AngleSharp.Dom.Html;
+using AngleSharp.Parser.Html;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace GifvBot
+namespace StreamableBot
 {
     static class Extensions
     {

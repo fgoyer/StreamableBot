@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 
-namespace GifvBot
+namespace StreamableBot
 {
     class Reddit : IDisposable
     {
@@ -23,7 +23,7 @@ namespace GifvBot
             this.username = username;
             this.commentTemplate = commentTemplate;
             client.BaseAddress = new Uri("https://oauth.reddit.com");
-            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("GifvBot", "0.1"));
+            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("StreamableBot", "0.1"));
         }
 
         public void Dispose()
@@ -92,7 +92,7 @@ namespace GifvBot
 
         async Task<IReadOnlyList<Item>> GetListingPageAsync(string before)
         {
-            var json = await client.GetJsonAsync($"domain/imgur.com/new?limit={Limit}&before={before}");
+            var json = await client.GetJsonAsync($"domain/clips.twitch.tv/new?limit={Limit}&before={before}");
             return ParseJsonListing(json, false);
         }
 

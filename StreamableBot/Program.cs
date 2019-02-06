@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GifvBot
+namespace StreamableBot
 {
     class Program
     {
@@ -21,11 +21,11 @@ namespace GifvBot
 
         Program()
         {
-            username = Environment.GetEnvironmentVariable("GIFVBOT_REDDIT_USERNAME");
-            clientId = Environment.GetEnvironmentVariable("GIFVBOT_REDDIT_CLIENT_ID");
-            secret = Environment.GetEnvironmentVariable("GIFVBOT_REDDIT_SECRET");
-            refreshToken = Environment.GetEnvironmentVariable("GIFVBOT_REDDIT_REFRESH_TOKEN");
-            isCommentingEnabled = "true".Equals(Environment.GetEnvironmentVariable("GIFVBOT_IS_COMMENTING_ENABLED"), StringComparison.OrdinalIgnoreCase);
+            username = Environment.GetEnvironmentVariable("STREAMABLEBOT_REDDIT_USERNAME");
+            clientId = Environment.GetEnvironmentVariable("STREAMABLEBOT_REDDIT_CLIENT_ID");
+            secret = Environment.GetEnvironmentVariable("STREAMABLEBOT_REDDIT_SECRET");
+            refreshToken = Environment.GetEnvironmentVariable("STREAMABLEBOT_REDDIT_REFRESH_TOKEN");
+            isCommentingEnabled = "true".Equals(Environment.GetEnvironmentVariable("STREAMABLEBOT_IS_COMMENTING_ENABLED"), StringComparison.OrdinalIgnoreCase);
             commentTemplate = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CommentTemplate.txt"));
         }
 
@@ -64,7 +64,7 @@ namespace GifvBot
                 var items = await reddit.GetNewItemsAsync(lastProcessed, emptyListingCount < EmptyListingFailsafeThreshold);
                 emptyListingCount = items.Count > 0 ? 0 : emptyListingCount + 1;
 
-                var filtered = items.Where(item => (item.Link.Host == "imgur.com" || item.Link.Host.EndsWith(".imgur.com")) && !item.Link.AbsolutePath.EndsWith(".gifv")).ToList();
+                var filtered = items.Where(item => (item.Link.Host == "clips.twitch.tv" || item.Link.Host.EndsWith(".imgur.com")) && !item.Link.AbsolutePath.EndsWith(".gifv")).ToList();
                 Console.WriteLine($"{items.Count} new items, {filtered.Count} to process, {items.Count - filtered.Count} filtered out");
 
                 var convertedCount = 0;

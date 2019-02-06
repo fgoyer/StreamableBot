@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 
-namespace GifvBot
+namespace StreamableBot
 {
     class Imgur : IDisposable
     {
