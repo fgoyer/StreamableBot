@@ -1,6 +1,6 @@
 # StreamableBot
 
-StreamableBot is a Reddit bot that automatically posts a Streamable video link in response to submissions containing a link to video clips on twitch. It is currently active and running under the username [u/](https://www.reddit.com/user//).
+StreamableBot is a Reddit bot that automatically posts a Streamable video link in response to submissions containing a link to video clips on twitch. It is currently active and running under the username [u/streamablemirrorbot](https://www.reddit.com/user/streamablemirrorbot/).
 
 For general information not related to the code see the [FAQ]().
 
